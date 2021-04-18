@@ -1,6 +1,7 @@
 # Simulation-of-Universal-Gravitation
 
-## Simulation Sctipts of universal gravitation and the solar system with Unity / 万有引力を実装した太陽系シミュレーション with Unity
+## Simulation Sctipts of universal gravitation and the solar system with Unity
+   - **万有引力を実装した太陽系シミュレーション with Unity**
 
 
 目次
