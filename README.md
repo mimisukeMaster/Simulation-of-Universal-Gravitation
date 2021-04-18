@@ -30,6 +30,6 @@
 [comet_pseudo](https://www.solarsystemscope.com/textures/)
 
 `DemoScene`内のSkyboxは以下の*Asset*を使用
-[skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633)
+- [skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633) : **Skybox Series Free**
 
 - post processing も使用しています
