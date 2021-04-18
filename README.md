@@ -1,6 +1,6 @@
-###### Simulation-of-Universal-Gravitation
+# Simulation-of-Universal-Gravitation
 
-##### Simulation Sctipts of universal gravitation and the solar system with Unity / 万有引力を実装した太陽系シミュレーション with Unity
+## Simulation Sctipts of universal gravitation and the solar system with Unity / 万有引力を実装した太陽系シミュレーション with Unity
 
 
 目次
@@ -13,7 +13,7 @@
 > - [クレジット表記](#credit)
 
 
-## <h2 id="credit">クレジット表記</h2>
+#### <h2 id="credit">クレジット表記</h2>
    - `DemoScene`内の天体でTextureを外部サイトから引用したものは以下の通りです
 
 [earth_pseudo](https://www.solarsystemscope.com/textures/)
