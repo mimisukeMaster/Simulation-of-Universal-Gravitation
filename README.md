@@ -6,7 +6,7 @@
 
 ### 目次
 > - [概要](#description)
-> - [](#)
+> - [SimpleScriptSceneについて(メイン)](#simplescr)
 > - [](#)
 > - [](#)
 > - [](#)
@@ -15,43 +15,14 @@
 
 
 #### <h2 id="description">概要</h2>
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
+
+> *Coming soon*
+
+
+#### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
+
+> *Coming soon*
+
 
 #### <h2 id="credit">クレジット表記</h2>
    - `DemoScene`内の天体でTextureを外部サイトから引用したものは以下の通りです
