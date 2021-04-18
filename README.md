@@ -17,17 +17,18 @@
 
 [earth_pseudo](https://www.solarsystemscope.com/textures/)
 
-[mars](https://www.solarsystemscope.com/textures/)
+[mars_pseudo](https://www.solarsystemscope.com/textures/)
 
-[venus](https://www.solarsystemscope.com/textures/)
+[venus_pseudo](https://www.solarsystemscope.com/textures/)
 
-[ganimede](http://www.planetaryvisions.com/Texture_map.php?pid=206)
+[ganimede_pseudo](http://www.planetaryvisions.com/Texture_map.php?pid=206)
 
-[jupyter](https://www.solarsystemscope.com/textures/)
+[jupyter_pseudo](https://www.solarsystemscope.com/textures/)
 
-[sun](https://www.solarsystemscope.com/textures/)
+[sun_pseudo](https://www.solarsystemscope.com/textures/)
 
-[comet](https://www.solarsystemscope.com/textures/)
+[comet_pseudo](https://www.solarsystemscope.com/textures/)
+
 `DemoScene`内のSkyboxは以下の*Asset*を使用
 [skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633)
 
