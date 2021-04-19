@@ -25,6 +25,7 @@
 > 少し手を加えるだけです
 
 > なぜ手を加える必要がある？
+
 何もいじらずそのまま`Play`すると、Scene内のObjectらはすべてそのまま落下してしまいます。
 これは、`UniversalGravitationController`の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
 
