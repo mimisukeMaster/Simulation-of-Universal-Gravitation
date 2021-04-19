@@ -21,7 +21,16 @@
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
 
-> *Coming soon*
+#####SimpleScriptSceneを正し`Play`させるための前準備
+> 少し手を加えるだけです
+
+> なぜ手を加える必要がある？
+何もいじらずそのまま`Play`すると、Scene内のObjectらはすべてそのまま落下してしまいます。
+これは、`UniversalGravitationController`の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
+
+> 修正方法
+1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに`UniversalGravitationController`スクリプトを表示させます。
+2. スクリプト上方の`Add all Rigidbodies from the scene'(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上入ることはありません。
 
 
 #### <h2 id="credit">クレジット表記</h2>
