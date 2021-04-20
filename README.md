@@ -16,9 +16,13 @@
 
 #### <h2 id="description">概要</h2>
 
-**:white_check_mark:このリポジトリは、あくまで万有引力をUnityで実装するという内容が土台になっています。**\n
-**それを使って、疑似的な太陽系のシミュレーションを行っています。**
-
+**:white_check_mark:このリポジトリは、あくまで万有引力をUnityで実装するという内容が土台になっています。**
+**:arrow_right:それを使って、疑似的な太陽系のシミュレーションを行っています。**
+構成は以下の通りです:
+|Scene name|内容|
+|:---|:---|
+|`SimpleScriptScene`|ベースとなる[`UniversalGravitationController`](Simulation-of-Universal-Gravitation/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトのみを実装したScene|
+|`DemoScene`|[`UniversalGravitationController`](Simulation-of-Universal-Gravitation/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を応用して、太陽系をシミュレーションしているScene|
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
 
