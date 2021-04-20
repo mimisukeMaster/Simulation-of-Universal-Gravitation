@@ -1,5 +1,5 @@
 # Simulation-of-Universal-Gravitation
-
+***
 ## Simulation Sctipts of universal gravitation and the solar system with Unity
    - **万有引力を実装した太陽系シミュレーション with Unity**
 ## > use **Unity-version 2019.4.20(LTS)**
@@ -16,7 +16,8 @@
 
 #### <h2 id="description">概要</h2>
 
-> *Coming soon*
+**:white_check_mark:このリポジトリは、万有引力をUnityで実装するという内容があくまで土台になっています。**
+**それを使って、疑似的な太陽系のシミュレーションを行っています。**
 
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
