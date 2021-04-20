@@ -22,8 +22,8 @@
 構成は以下の通りです:
 |Scene name|内容|
 |:---|:---|
-|`SimpleScriptScene`|ベースとなる[`UniversalGravitationController`](Simulation-of-Universal-Gravitation/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトのみを実装したScene|
-|`DemoScene`|[`UniversalGravitationController`](Simulation-of-Universal-Gravitation/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を応用して、太陽系をシミュレーションしているScene|
+|`SimpleScriptScene`|ベースとなる[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトのみを実装したScene|
+|`DemoScene`|[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を応用して、太陽系をシミュレーションしているScene|
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
 
