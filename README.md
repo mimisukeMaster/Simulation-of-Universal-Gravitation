@@ -21,7 +21,7 @@
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
 
-##### SimpleScriptSceneを正しく`Play`させるための前準備 ――少し手を加えるだけです
+##### SimpleScriptSceneを正しく`Play`させるための前準備 ――*少し手を加えるだけです:open_hands:*
 
 
 > なぜ手を加える必要がある？
