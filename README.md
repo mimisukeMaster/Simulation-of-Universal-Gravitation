@@ -10,7 +10,7 @@
 > - [](#)
 > - [](#)
 > - [](#)
-> - [](#)
+> - [取り込む際の注意点](#importwarning)
 > - [クレジット表記](#credit)
 
 
@@ -21,7 +21,7 @@
 
 #### <h2 id="simplescr">SimpleScriptSceneについて(メイン)</h2>
 
-##### SimpleScriptSceneを正しく`Play`させるための前準備 ――*少し手を加えるだけです:open_hands:*
+##### SimpleScriptSceneを正しく`Play`させるための前準備 ――少し手を加えるだけです:open_hands:
 
 
 > なぜ手を加える必要がある？
@@ -33,6 +33,10 @@
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに`UniversalGravitationController`スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
    - このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
+
+#### h2 id="importwarning">取り込む際の注意点</h2>
+Unityに取り込んだ際に、以下の写真のようなエラーまたは警告文:warning:が表示される場合があります。ですが、Consoleタブの`Clear`を押すと消え、そのまま再生できるのであれば問題ありません。再生ボタンを押すと`All compiler errors have to fixed before you can enter playmode!`という表示文でストップされてしまうようであれば、対処する必要があります。恐らくUnity versionが異なっているためかもしれません。
+![ErrorWarning](https://user-images.githubusercontent.com/81568941/115403161-21d58e00-a227-11eb-8988-b3644b3ebcba.png)
 
 
 #### <h2 id="credit">クレジット表記</h2>
