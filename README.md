@@ -6,7 +6,7 @@
 
 ### 目次
 > - [概要](#description)
-> - [[UniversalGravitationController.cs](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトについて](#ugcontrollercs)
+> - [UniversalGravitationController.cs](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトについて(#ugcontrollercs)
 > - [SimpleScriptSceneについて(メインシーン)](#simplescrscene)
 > - [DemoSceneについて(シミュレーションシーン)](#demoscene)
 > - [](#)
