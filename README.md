@@ -37,22 +37,23 @@
 > なぜ手を加える必要がある？
 
 何もいじらずそのまま`Play`すると、Scene内のObjectらはすべてそのまま落下してしまいます。
-これは、`UniversalGravitationController`の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
+これは、[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
 
 > 修正方法
-1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに`UniversalGravitationController`スクリプトを表示させます。
+1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
    - このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
 
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
 > Coming Soon >_<
-> ######<h2 id="firstunivelo">初速度の与え方等...記述中...</h2>
+<h2 id="firstunivelo">初速度の与え方等...記述中...</h2>
 
 
 
 #### <h2 id="importwarning">取り込む際の注意点</h2>
 Unityに取り込んだ際に、以下の写真のようなエラーまたは警告文:warning:が表示される場合があります。ですが、Consoleタブの`Clear`を押すと消え、そのまま再生できるのであれば問題ありません。再生ボタンを押すと`All compiler errors have to fixed before you can enter playmode!`という表示文でストップされてしまうようであれば、対処する必要があります。恐らくUnity versionが異なっているためかもしれません。
+
 ![ErrorWarning](https://user-images.githubusercontent.com/81568941/115403161-21d58e00-a227-11eb-8988-b3644b3ebcba.png)
 
 
@@ -62,19 +63,13 @@ Unityに取り込んだ際に、以下の写真のようなエラーまたは警
 #### <h2 id="credit">クレジット表記</h2>
    - `DemoScene`内の天体でTextureを外部サイトから引用したものは以下の通りです
 
-[earth_pseudo](https://www.solarsystemscope.com/textures/)
-
-[mars_pseudo](https://www.solarsystemscope.com/textures/)
-
-[venus_pseudo](https://www.solarsystemscope.com/textures/)
-
-[ganimede_pseudo](http://www.planetaryvisions.com/Texture_map.php?pid=206)
-
-[jupyter_pseudo](https://www.solarsystemscope.com/textures/)
-
-[sun_pseudo](https://www.solarsystemscope.com/textures/)
-
-[comet_pseudo](https://www.solarsystemscope.com/textures/)
+- [earth_pseudo](https://www.solarsystemscope.com/textures/)
+- [mars_pseudo](https://www.solarsystemscope.com/textures/)
+- [venus_pseudo](https://www.solarsystemscope.com/textures/)
+- [ganimede_pseudo](http://www.planetaryvisions.com/Texture_map.php?pid=206)
+- [jupyter_pseudo](https://www.solarsystemscope.com/textures/)
+- [sun_pseudo](https://www.solarsystemscope.com/textures/)
+- [comet_pseudo](https://www.solarsystemscope.com/textures/)
 
 `DemoScene`内のSkyboxは以下の*Asset*を使用
 - [skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633) : **Skybox Series Free**
