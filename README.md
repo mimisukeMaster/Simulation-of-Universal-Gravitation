@@ -22,8 +22,8 @@
 構成は以下の通りです:
 |Scene name|内容|
 |:---|:---|
-|[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)|ベースとなる[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトのみを実装したScene|
-|[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)|[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を活用して、太陽系をシミュレーションしているScene|
+|[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)|ベースとなる[`UniversalGravitationController.cs`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトのみを実装したScene|
+|[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)|[`UniversalGravitationController.cs`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を活用して、太陽系をシミュレーションしているScene|
 
 基盤となるScriptのみを実装した[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)は、空間内の物体がひきつけられることのみを確かめているシーンです。このままだと単純すぎるので、[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)でそのScriptに加え適切な[初速度](#firstunivelo)を与えるScript([PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)など)を追加で用いて天体の動きを再現しています。このSceneをいじってみると面白いと思います(詳しくは[下方](#demoscene)へ)
 
