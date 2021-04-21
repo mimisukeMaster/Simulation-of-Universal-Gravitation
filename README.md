@@ -47,7 +47,7 @@
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
 > Coming Soon >_<
-<h2 id="firstunivelo">初速度の与え方等...記述中...</h2>
+> *<h2 id="firstunivelo">初速度の与え方等...記述中...</h2>*
 
 
 
