@@ -30,6 +30,7 @@
 
 #### <h2 id="ugcontrollercs">[UniversalGravitationController.cs]((/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs))スクリプトについて</h2>
 > inspector上での見え方(**Editor拡張の使用**)について
+
 Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のように見えると思います:
 ![UG_ControllerFirstPreview](https://user-images.githubusercontent.com/81568941/115720022-9d664500-a3b7-11eb-82dd-05a7ae87be8d.png)
 
@@ -42,7 +43,7 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 |4.|****||
 |5.|****||
 |6.|****||
->  editer拡張、処理概要
+>  editor拡張、処理概要
 
 
 #### <h2 id="simplescrscene">SimpleScriptSceneについて(メインシーン)</h2>
@@ -58,12 +59,12 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 > 修正方法
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
-   - <h id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。</h>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
+   - <h4 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。</h4>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
 
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
 > Coming Soon >_<
-> *<h id="firstunivelo">初速度の与え方等...記述中...</h>*
+> *<h4 id="firstunivelo">初速度の与え方等...記述中...</h4>*
 
 
 
