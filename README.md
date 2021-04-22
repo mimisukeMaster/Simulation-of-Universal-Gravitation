@@ -15,7 +15,7 @@
 > - [クレジット表記](#credit)
 
 
-#### <h2 id="description">概要</h2>
+#### <h2 id="description">概要</h3>
 
 **:white_check_mark:このリポジトリは、あくまで万有引力をUnityで実装するという内容が土台になっています。**
 
