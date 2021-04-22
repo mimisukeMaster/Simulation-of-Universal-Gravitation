@@ -20,6 +20,7 @@
 **:white_check_mark:このリポジトリは、あくまで万有引力をUnityで実装するという内容が土台になっています。**
 
 **:arrow_right:それを使って、疑似的な太陽系のシミュレーションを行っています。**
+
 構成は以下の通りです:
 |Scene name|内容|
 |:---|:---|
@@ -29,7 +30,7 @@
 基盤となるScriptのみを実装した[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)は、空間内の物体がひきつけられることのみを確かめているシーンです。このままだと単純すぎるので、[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)でそのScriptに加え適切な[初速度](#firstunivelo)を与えるScript([PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)など)を追加で用いて天体の動きを再現しています。このSceneをいじってみると面白いと思います(詳しくは[下方](#demoscene)へ)
 
 #### <h2 id="ugcontrollercs">[UniversalGravitationController.cs]((/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs))スクリプトについて</h2>
-> inspector上での見え方(**Editor拡張の使用**)について
+> <h3>inspector上での見え方(<b>Editor拡張の使用</b>)</h3>
 
 Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のように見えると思います:
 ![UG_ControllerFirstPreview](https://user-images.githubusercontent.com/81568941/115720022-9d664500-a3b7-11eb-82dd-05a7ae87be8d.png)
