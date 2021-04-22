@@ -29,7 +29,20 @@
 基盤となるScriptのみを実装した[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)は、空間内の物体がひきつけられることのみを確かめているシーンです。このままだと単純すぎるので、[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)でそのScriptに加え適切な[初速度](#firstunivelo)を与えるScript([PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)など)を追加で用いて天体の動きを再現しています。このSceneをいじってみると面白いと思います(詳しくは[下方](#demoscene)へ)
 
 #### <h2 id="ugcontrollercs">[UniversalGravitationController.cs]((/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs))スクリプトについて</h2>
-> Coming Soon >_<
+> inspector上での見え方(**Editor拡張の使用**)について
+Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のように見えると思います:
+![UG_ControllerFirstPreview](https://user-images.githubusercontent.com/81568941/115720022-9d664500-a3b7-11eb-82dd-05a7ae87be8d.png)
+
+順番に説明していきます
+|No.|仮名称|説明|
+|:---|---:|:---|
+|1.| **English/Japanese Button**|パラメータの表示言語を日本語⇔英語に切り替えるボタンです。|
+|2.|**Add all Rigi....scene Button**|下の`GravityTargets_obj`listへSceneから全てのRigidbodyを追加するボタンです(詳しくは[下方へ↓](#aarfts))|
+|3.|**GravityTarget_obj list**|このScriptの影響を受けるRigidbody(-ComponentのついたGameObject)を入れるlist|
+|4.|****||
+|5.|****||
+|6.|****||
+>  editer拡張、処理概要
 
 
 #### <h2 id="simplescrscene">SimpleScriptSceneについて(メインシーン)</h2>
@@ -45,7 +58,7 @@
 > 修正方法
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
-   - このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
+   - <h2 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。</h2>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
 
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
