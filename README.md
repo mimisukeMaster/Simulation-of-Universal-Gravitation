@@ -32,10 +32,10 @@
 #### <h2 id="ugcontrollercs">[UniversalGravitationController.cs]((/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs))スクリプトについて</h2>
 > <h3>inspector上での見え方(<b>Editor拡張の使用</b>)</h3>
 
-Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のように見えると思います:
+Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のようになると思います:
 ![UG_ControllerFirstPreview](https://user-images.githubusercontent.com/81568941/115720022-9d664500-a3b7-11eb-82dd-05a7ae87be8d.png)
 
-順番に説明していきます
+簡単に説明します
 |No.|仮名称|説明|
 |:---|---:|:---|
 |1.| **English/Japanese Button**|パラメータの表示言語を日本語⇔英語に切り替えるボタンです。|
