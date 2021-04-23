@@ -43,7 +43,7 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 |3.|**GravityTarget_obj list**|このScriptの影響を受けるRigidbody(-ComponentのついたGameObject)を入れるlist|
 |4.|**advanced Setting Title**|このScriptの処理の内部では、実際の万有引力定数(6.67408*10^-11  m^3 kg^−1 s^−2)を使用しているため、Rigidbody.massが小さいと視覚的に分かりづらくなってしまいます。そこで、このタイトル以下からは、それを改善するため万有引力定数を意図的に小さくする設定を行います。|
 |5.|**VisualSimulation Box**|advanced Settingを有効化するか指定できます(有効化しない場合これより下は操作できません)。|
-|6.|****||
+|6.|**EXPONENT Parameter**|上のBoxを有効化した際に、どの程度視覚化するか(万有引力定数を小さくするか)を指定するもの|
 >  editor拡張、処理概要
 
 
