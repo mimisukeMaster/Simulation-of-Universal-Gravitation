@@ -37,16 +37,46 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 
 簡単に説明します
 |No.|仮名称|説明|
-|:---|---:|:---|
+|:---|------:|:---|
 |1.| **English/Japanese Button**|パラメータの表示言語を日本語⇔英語に切り替えるボタン|
 |2.|**Add all Rigi... scene Button**|下の`GravityTargets_obj`listへSceneから全てのRigidbodyを追加するボタン(詳しくは[下方](#aarfts)へ↓)|
 |3.|**GravityTarget_obj list**|このScriptの影響を受けるRigidbody(-ComponentのついたGameObject)を入れるlist|
 |4.|**advanced Setting Title**|このScriptは、実際の万有引力定数(6.67408*10^-11 [m^3 kg^−1 s^−2])を初めは使用して計算しているため、Rigidbody.massが小さいと視覚的に分かりづらくなります。そこで、このタイトル以下からは、それを改善するため万有引力定数を意図的に小さくする設定を行えます。|
 |5.|**VisualSimulation Box**|advanced Settingを有効化するか指定できます(有効化しない場合これより下は操作できません)。|
 |6.|**Exponent Parameter**|上のBoxを有効化した際に、どの程度視覚化するか(万有引力定数をどれほど大きくするか)を指定するもの|
-[補足]
-3. **GravityTargets_obj list**について、この文字の上にカーソルをおくと*Tooltip*が表示されます。参考にしてください。
-5. **VisualSimulation Box** について、これにチェックを入れると*info*が表示され、説明文が現れます。同じく参考にしてください。
+> 補足
+  - 3: **GravityTargets_obj list**について、この文字の上にカーソルをおくと*Tooltip*が表示されます。参考にしてください。
+  - 5: **VisualSimulation Box** について、これにチェックを入れると*info*が表示され、説明文が現れます。同じく参考にしてください。
+
+> <h3>内部処理の概要</h3>
+万有引力の計算は以下の公式を用いて行っています:
+![UG_fomula](https://user-images.githubusercontent.com/81568941/115878878-061af380-a484-11eb-9225-8228f24a6418.png)
+
+**F** は万有引力の大きさ、**M**,**m** は2物体のそれぞれの質量、**r** は物体間の距離、**G** は万有引力定数。
+計算部分:
+``` csharp
+for (int i = 0; i <= GravityTargets_obj.Count -1 ;)
+        {
+            for(int n = 0; n <= GravityTargets_obj.Count -1 ;)
+            {
+                if (i != n)
+                {
+                    Vector3 direction = (GravityTargets_obj[i].transform.position - GravityTargets_obj[n].transform.position);
+
+                    double distance = (double)direction.magnitude;
+                    distance *= distance;
+
+                    double gravity = coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance;
+
+                    float gravityf = (float)gravity; 
+                    GravityTargets_obj[i].AddForce(-gravityf * direction.normalized, ForceMode.Force);
+                }
+                n++;
+            }
+            i++;
+        }
+```
+互いに引き合う(両者に力が加わる)ように`for`文のなかに`for`文をいれています。そのため、処理が多少重くなります。
 
 >  editor拡張、処理概要
 
@@ -56,12 +86,12 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 ##### SimpleScriptSceneを正しく`Play`させるための前準備 ――少し手を加えるだけです:open_hands:
 
 
-> なぜ手を加える必要がある？
+> <h3>なぜ手を加える必要がある？</h3>
 
 何もいじらずそのまま`Play`すると、Scene内のObjectらはすべてそのまま落下してしまいます。
 これは、[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
 
-> 修正方法
+> <h3>修正方法</h3>
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
    - <h4 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。</h4>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
