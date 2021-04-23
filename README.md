@@ -50,7 +50,8 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 
 > <h3>内部処理の概要</h3>
 万有引力の計算は以下の公式を用いて行っています:
-![UG_fomula](https://user-images.githubusercontent.com/81568941/115883549-dcb09680-a488-11eb-9c95-c862fe9aead5.png)
+
+![UG_fomula](https://user-images.githubusercontent.com/81568941/115883868-3dd86a00-a489-11eb-8040-bae24a3849db.png)
 
 **F** は万有引力の大きさ、**M**,**m** は2物体のそれぞれの質量、**r** は物体間の距離、**G** は万有引力定数。
 
@@ -78,8 +79,20 @@ for (int i = 0; i <= GravityTargets_obj.Count -1 ;)
         }
 ```
 互いに引き合う(両者に力が加わる)ように`for`文のなかに`for`文をいれています。そのため、処理が多少重くなります。
+`Script`内の変数はそれぞれ以下に対応:
+|公式の変数,値|Script内の変数,値|
+|***F***|`gravityf`(double->float変換後)|
+|***M***|`GravityTargets_obj[i].mass`(順不同)|
+|***m***|`GravityTargets_obj[n].mass`(順不同)|
+|***r***|`distance`(二乗後)|
+|***G***|`coefficient`|
+``` csharp
+coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance;
+```で、計算しています。
 
->  editor拡張、処理概要
+
+> <h3>Editor拡張の使用</h3>
+このScriptはEditor拡張を使用しています。自作ですので、inspectorのサイズを変更するとボタンの位置が崩れたり文字が隠れてしまうことがありますがご了承ください。
 
 
 #### <h2 id="simplescrscene">SimpleScriptSceneについて(メインシーン)</h2>
