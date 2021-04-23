@@ -81,6 +81,7 @@ for (int i = 0; i <= GravityTargets_obj.Count -1 ;)
 互いに引き合う(両者に力が加わる)ように`for`文のなかに`for`文をいれています。そのため、処理が多少重くなります。
 `Script`内の変数はそれぞれ以下に対応:
 |公式の変数,値|Script内の変数,値|
+|:---:|:---|
 |***F***|`gravityf`(double->float変換後)|
 |***M***|`GravityTargets_obj[i].mass`(順不同)|
 |***m***|`GravityTargets_obj[n].mass`(順不同)|
