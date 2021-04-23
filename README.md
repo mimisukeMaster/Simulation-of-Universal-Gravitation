@@ -89,7 +89,8 @@ for (int i = 0; i <= GravityTargets_obj.Count -1 ;)
 |***G***|`coefficient`|
 ``` csharp
 coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance;
-```で、計算しています。
+```
+で、計算しています。
 
 
 > <h3>Editor拡張の使用</h3>
