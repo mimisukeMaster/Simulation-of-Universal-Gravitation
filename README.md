@@ -50,10 +50,11 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 
 > <h3>内部処理の概要</h3>
 万有引力の計算は以下の公式を用いて行っています:
-![UG_fomula](https://user-images.githubusercontent.com/81568941/115878878-061af380-a484-11eb-9225-8228f24a6418.png)
+![UG_fomula](https://user-images.githubusercontent.com/81568941/115883549-dcb09680-a488-11eb-9c95-c862fe9aead5.png)
 
 **F** は万有引力の大きさ、**M**,**m** は2物体のそれぞれの質量、**r** は物体間の距離、**G** は万有引力定数。
-計算部分:
+
+万有引力計算は以下の部分:
 ``` csharp
 for (int i = 0; i <= GravityTargets_obj.Count -1 ;)
         {
