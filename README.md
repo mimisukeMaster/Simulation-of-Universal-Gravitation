@@ -41,9 +41,13 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 |1.| **English/Japanese Button**|パラメータの表示言語を日本語⇔英語に切り替えるボタン|
 |2.|**Add all Rigi....scene Button**|下の`GravityTargets_obj`listへSceneから全てのRigidbodyを追加するボタン(詳しくは[下方](#aarfts)へ↓)|
 |3.|**GravityTarget_obj list**|このScriptの影響を受けるRigidbody(-ComponentのついたGameObject)を入れるlist|
-|4.|**advanced Setting Title**|このScriptの処理の内部では、実際の万有引力定数(6.67408*10^-11  m^3 kg^−1 s^−2)を使用しているため、Rigidbody.massが小さいと視覚的に分かりづらくなってしまいます。そこで、このタイトル以下からは、それを改善するため万有引力定数を意図的に小さくする設定を行います。|
+|4.|**advanced Setting Title**|このScriptは、実際の万有引力定数(6.67408*10^-11 [m^3 kg^−1 s^−2])を初めは使用して計算しているため、Rigidbody.massが小さいと視覚的に分かりづらくなります。そこで、このタイトル以下からは、それを改善するため万有引力定数を意図的に小さくする設定を行えます。|
 |5.|**VisualSimulation Box**|advanced Settingを有効化するか指定できます(有効化しない場合これより下は操作できません)。|
-|6.|**EXPONENT Parameter**|上のBoxを有効化した際に、どの程度視覚化するか(万有引力定数を小さくするか)を指定するもの|
+|6.|**Exponent Parameter**|上のBoxを有効化した際に、どの程度視覚化するか(万有引力定数をどれほど大きくするか)を指定するもの|
+[補足]
+3. **GravityTargets_obj list**について、この文字の上にカーソルをおくと*Tooltip*が表示されます。参考にしてください。
+5. **VisualSimulation Box** について、これにチェックを入れると*info*が表示され、説明文が現れます。同じく参考にしてください。
+
 >  editor拡張、処理概要
 
 
