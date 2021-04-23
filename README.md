@@ -51,7 +51,10 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 > <h3>内部処理の概要</h3>
 万有引力の計算は以下の公式を用いて行っています:
 
-![UG_fomula](https://user-images.githubusercontent.com/81568941/115883868-3dd86a00-a489-11eb-8040-bae24a3849db.png)
+![\begin{align*}
+F= \G\frac{Mm}{r^2}
+\end{align*}
+](https://render.githubusercontent.com/render/math?math=%5Chuge+%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0AF%3D+%5CG%5Cfrac%7BMm%7D%7Br%5E2%7D%0A%5Cend%7Balign%2A%7D%0A)
 
 **F** は万有引力の大きさ、**M**,**m** は2物体のそれぞれの質量、**r** は物体間の距離、**G** は万有引力定数。
 
