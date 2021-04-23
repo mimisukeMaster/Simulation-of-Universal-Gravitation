@@ -39,7 +39,7 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
 |No.|仮名称|説明|
 |:---|---:|:---|
 |1.| **English/Japanese Button**|パラメータの表示言語を日本語⇔英語に切り替えるボタン|
-|2.|**Add all Rigi....scene Button**|下の`GravityTargets_obj`listへSceneから全てのRigidbodyを追加するボタン(詳しくは[下方](#aarfts)へ↓)|
+|2.|**Add all Rigi... scene Button**|下の`GravityTargets_obj`listへSceneから全てのRigidbodyを追加するボタン(詳しくは[下方](#aarfts)へ↓)|
 |3.|**GravityTarget_obj list**|このScriptの影響を受けるRigidbody(-ComponentのついたGameObject)を入れるlist|
 |4.|**advanced Setting Title**|このScriptは、実際の万有引力定数(6.67408*10^-11 [m^3 kg^−1 s^−2])を初めは使用して計算しているため、Rigidbody.massが小さいと視覚的に分かりづらくなります。そこで、このタイトル以下からは、それを改善するため万有引力定数を意図的に小さくする設定を行えます。|
 |5.|**VisualSimulation Box**|advanced Settingを有効化するか指定できます(有効化しない場合これより下は操作できません)。|
