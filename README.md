@@ -8,15 +8,15 @@
 > - [概要](#description)
 > - [UniversalGravitationController.csスクリプトについて](#ugcontrollercs)
 >   - [inspector上での見え方(Editor拡張の使用)](#inspe)
->   - 内部処理の概要
->   - Editor拡張の使用
+>   - [内部処理の概要](#naibu)
+>   - [Editor拡張の使用](#editorex)
 > - [SimpleScriptSceneについて(メインシーン)](#simplescrscene)
->   - なぜ手を加える必要がある？
->   - 修正方法
+>   - [なぜ手を加える必要がある？](#whyadd)
+>   - [修正方法](#syusei)
 > - [DemoSceneについて(シミュレーションシーン)](#demoscene)
->   - 概要
->   - [PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)の初速導出方法
->   - [CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)の初速導出方法
+>   - [概要](#demodesc)
+>   - [[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)の初速導出方法](#firstunivelo)
+>   - [[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)の初速導出方法](#comsum)
 > - [取り込む際の注意点](#importwarning)
 > - [クレジット表記](#credit)
 
@@ -54,7 +54,7 @@ Unityに取り込んだ初期状態だと、恐らくinspector上では以下の
   - 3: **GravityTargets_obj list**について、この文字の上にカーソルをおくと*Tooltip*が表示されます。参考にしてください。
   - 5: **VisualSimulation Box** について、これにチェックを入れると*info*が表示され、説明文が現れます。同じく参考にしてください。
 
-> <h3>内部処理の概要</h3>
+> <h3 id="naibu">内部処理の概要</h3>
 万有引力の計算は以下の公式を用いて行っています:
 
 ![\begin{align*}
@@ -102,7 +102,7 @@ coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance
 で、計算しています。
 
 
-> <h3>Editor拡張の使用</h3>
+> <h3 id="editorex">Editor拡張の使用</h3>
 このScriptはEditor拡張を使用しています。自作ですので、inspectorのサイズを変更するとボタンの位置が崩れたり文字が隠れてしまうことがありますがご了承ください。
 
 
@@ -111,19 +111,19 @@ coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance
 ##### SimpleScriptSceneを正しく`Play`させるための前準備があります ――少し手を加えるだけです:open_hands:
 
 
-> <h3>なぜ手を加える必要がある？</h3>
+> <h3 id="whyadd">なぜ手を加える必要がある？</h3>
 
 何もいじらずそのまま`Play`すると、Scene内のObjectらはすべてそのまま落下してしまいます。
 これは、[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)の変数リストが空っぽになっていて、これにScene内のObjectらを加えていないためです。
 
-> <h3>修正方法</h3>
+> <h3 id="syusei">修正方法</h3>
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
    - <h4 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj` listに一括に追加するボタンです。</h4>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
 
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
-> <h3>概要</h3>
+> <h3 id="demodesc">概要</h3>
 DemoSceneでは[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を使用するとともに、[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)で周りの惑星に初速度を与えています。それにより、中央の`Sun_psedo`の周りを周回させています。
 全ての天体が[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)`.GravityTargets_Obj` listに入っています。
 
@@ -162,7 +162,7 @@ v_{1}
 initVelocityZ = System.Math.Sqrt(G * M / r);
 ```
 で、計算しています。
-> <h3>CometLauncher.csの初速導出方法</h3>
+> <h3 id="comsum">CometLauncher.csの初速導出方法</h3>
 計算は途中まで[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)と同じですが、楕円軌道を描いてほしいので離心率![\begin{align*}
 e<1
 \end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ae%3C1%0A%5Cend%7Balign%2A%7D)の範囲でなるべく大きめの値をとっています。
