@@ -15,8 +15,8 @@
 >   - [修正方法](#syusei)
 > - [DemoSceneについて(シミュレーションシーン)](#demoscene)
 >   - [概要](#demodesc)
->   - [[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)の初速導出方法](#firstunivelo)
->   - [[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)の初速導出方法](#comsum)
+>   - [PlanetLauncher.csの初速導出方法](#firstunivelo)
+>   - [CometLauncher.csの初速導出方法](#comsum)
 > - [取り込む際の注意点](#importwarning)
 > - [クレジット表記](#credit)
 
