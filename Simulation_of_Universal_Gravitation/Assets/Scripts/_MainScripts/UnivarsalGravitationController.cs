@@ -142,7 +142,7 @@ public class UnivarsalGravitationControllerEditor : Editor
             EditorGUILayout.LabelField("<color=default>--a--d--v--a--n--c--e--d--</color>",centerbold);
             EditorGUILayout.Space(5);
 
-            EditorGUILayout.LabelField("<color=default>The gravitational constant can be creased\nif you want to understand visually.</color>",centerbold);
+            EditorGUILayout.LabelField("<color=default>The gravitational constant can be increased\nif you want to understand visually.</color>",centerbold);
             EditorGUILayout.Space(5);
 
             _target.VisualSimulation = EditorGUILayout.Toggle("VisualSimulation", _target.VisualSimulation);
