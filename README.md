@@ -160,16 +160,13 @@ initVelocityZ = System.Math.Sqrt(G * M / r);
 計算は途中まで[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)と同じですが、楕円軌道を描いてほしいので離心率![\begin{align*}
 e<1
 \end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ae%3C1%0A%5Cend%7Balign%2A%7D)の範囲でなるべく大きめの値をとっています。
-先ほどと同様にして、第二宇宙速度の*地球*と*飛行物体*をそれぞれ*`Sun_pseudo`(太陽)*と*自身の惑星*とし、公式は
+先ほどと同様にして、第二宇宙速度の*地球*と*飛行物体*をそれぞれ`Sun_pseudo`(太陽)と自身の惑星とし、公式は
 
 ![\begin{align*}
 v_{2}= \sqrt{\frac{2GM}{r}}
 \end{align*}](https://render.githubusercontent.com/render/math?math=%5CLarge+%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Av_%7B2%7D%3D+%5Csqrt%7B%5Cfrac%7B2GM%7D%7Br%7D%7D%0A%5Cend%7Balign%2A%7D)
 
-これは第一宇宙速度の![\begin{align*}
-\sqrt{2}
-\end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Csqrt%7B2%7D%0A%5Cend%7Balign%2A%7D%0A)倍なので計算結果を`* System.Math.Sqrt(2)`した値を上限としています。
+これは第一宇宙速度の![\begin{align*}\sqrt{2}\end{align*}](https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Cbegin%7Balign%2A%7D%5Csqrt%7B2%7D%5Cend%7Balign%2A%7D)倍なので計算結果を`* System.Math.Sqrt(2)`した値を上限としています。
 
 
 
