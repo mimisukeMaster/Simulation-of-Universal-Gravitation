@@ -7,7 +7,7 @@
 ### 目次
 > - [概要](#description)
 > - [UniversalGravitationController.csスクリプトについて](#ugcontrollercs)
->   - inspector上での見え方(Editor拡張の使用)(#inspe)
+>   - [inspector上での見え方(Editor拡張の使用)](#inspe)
 >   - 内部処理の概要
 >   - Editor拡張の使用
 > - [SimpleScriptSceneについて(メインシーン)](#simplescrscene)
