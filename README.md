@@ -7,10 +7,16 @@
 ### 目次
 > - [概要](#description)
 > - [UniversalGravitationController.csスクリプトについて](#ugcontrollercs)
+>   - inspector上での見え方(Editor拡張の使用)(#inspe)
+>   - 内部処理の概要
+>   - Editor拡張の使用
 > - [SimpleScriptSceneについて(メインシーン)](#simplescrscene)
+>   - なぜ手を加える必要がある？
+>   - 修正方法
 > - [DemoSceneについて(シミュレーションシーン)](#demoscene)
-> - [](#)
-> - [](#)
+>   - 概要
+>   - [PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)の初速導出方法
+>   - [CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)の初速導出方法
 > - [取り込む際の注意点](#importwarning)
 > - [クレジット表記](#credit)
 
@@ -30,7 +36,7 @@
 基盤となるScriptのみを実装した[`SimpleScriptScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/SimpleScriptScene.unity)は、空間内の物体がひきつけられることのみを確かめているシーンです。このままだと単純すぎるので、[`DemoScene`](/Simulation_of_Universal_Gravitation/Assets/Scenes/Demo/DemoScene.unity)でそのScriptに加え適切な[初速度](#firstunivelo)を与えるScript([PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)など)を追加で用いて天体の動きを再現しています。このSceneをいじってみると面白いと思います(詳しくは[下方](#demoscene)へ↓)
 
 #### <h2 id="ugcontrollercs">[UniversalGravitationController.cs]((/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs))スクリプトについて</h2>
-> <h3>inspector上での見え方(<b>Editor拡張の使用</b>)</h3>
+> <h3 id="inspe">inspector上での見え方(<b>Editor拡張の使用</b>)</h3>
 
 Unityに取り込んだ初期状態だと、恐らくinspector上では以下の画像のようになると思います:
 ![UG_ControllerFirstPreview](https://user-images.githubusercontent.com/81568941/115720022-9d664500-a3b7-11eb-82dd-05a7ae87be8d.png)
@@ -102,7 +108,7 @@ coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance
 
 #### <h2 id="simplescrscene">SimpleScriptSceneについて(メインシーン)</h2>
 
-##### SimpleScriptSceneを正しく`Play`させるための前準備 ――少し手を加えるだけです:open_hands:
+##### SimpleScriptSceneを正しく`Play`させるための前準備があります ――少し手を加えるだけです:open_hands:
 
 
 > <h3>なぜ手を加える必要がある？</h3>
