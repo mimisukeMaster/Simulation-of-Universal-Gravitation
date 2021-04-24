@@ -113,13 +113,13 @@ coefficient * GravityTargets_obj[i].mass * GravityTargets_obj[n].mass / distance
 > <h3>修正方法</h3>
 1. `SimpleScriptScene`内のHierarchyから`UniversalGravitationDirector`Objectを選択し、inspectorに[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)スクリプトを表示させます。
 2. スクリプト上方の`Add all Rigidbodies from the scene`(日本語に切り替えたなら`シーン内の全Rigidbodyを追加`)をクリックします。
-   - <h4 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj`listに一括に追加するボタンです。</h4>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
+   - <h4 id="aarfts">このボタンは、今現在開いているSceneの中からRigidbodyコンポーネントを持つすべてのGameObjectを`GravityTarget_obj` listに一括に追加するボタンです。</h4>重複がある場合は追加されないようになっているので既にいくつかlistに追加されていても2個(2 Elements)以上同じRigidbodyが入ることはありません。
 
 
 #### <h2 id="demoscene">DemoSceneについて(シミュレーションシーン)</h2>
 > <h3>概要</h3>
 DemoSceneでは[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)を使用するとともに、[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs),[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)で周りの惑星に初速度を与えています。それにより、中央の`Sun_psedo`の周りを周回させています。
-全ての天体が[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs).GravityTargets_Obj listに入っています。
+全ての天体が[`UniversalGravitationController`](/Simulation_of_Universal_Gravitation/Assets/Scripts/_MainScripts/UnivarsalGravitationController.cs)`.GravityTargets_Obj` listに入っています。
 
 各天体について
 - **`Sun_psedo`**
@@ -148,7 +148,7 @@ v_{1}
 なので、この公式に[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)内の変数を対応させています。
 |公式の変数|Script内の変数|
 |:---:|:---|
-|***v1***|`float initvelocityZ`|
+|![\begin{align*}v_{1}\end{align*}](https://render.githubusercontent.com/render/math?math=%5Ctextstyle+%5Cbegin%7Balign%2A%7Dv_%7B1%7D%5Cend%7Balign%2A%7D)|`float initvelocityZ`|
 |***G***|`var G`|
 |***M***|`var M`|
 |***r***|`var r`|
