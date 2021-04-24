@@ -130,18 +130,34 @@ DemoSceneでは[`UniversalGravitationController`](/Simulation_of_Universal_Gravi
 > <h3 id="firstunivelo">[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)の初速導出方法</h3>
 初速は第一宇宙速度の考えを基にしています。定義の中の、*地球*と*飛行物体*をそれぞれ*`Sun_pseudo`(太陽)*と*自身の惑星*として、太陽の周りを円軌道で周回するように導出しています。
 第一宇宙速度の公式は
+
 ![\begin{align*}
-v= \sqrt{\frac{GM}{r}}
-\end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Av%3D+%5Csqrt%7B%5Cfrac%7BGM%7D%7Br%7D%7D%0A%5Cend%7Balign%2A%7D)
-**v**は第一宇宙速度、**G**は万有引力定数、**M**は太陽の質量、**r**は太陽と惑星の距離。
+v_{1}= \sqrt{\frac{GM}{r}}
+\end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Av_%7B1%7D%3D+%5Csqrt%7B%5Cfrac%7BGM%7D%7Br%7D%7D%0A%5Cend%7Balign%2A%7D)
+
+**v1**は第一宇宙速度、**G**は万有引力定数、**M**は太陽の質量、**r**は太陽と惑星の距離。
 なので、この公式に[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)内の変数を対応させています。
 |公式の変数|Script内の変数|
 |:---:|:---|
-|***v***|`float initvelocityZ`|
+|***v1***|`float initvelocityZ`|
 |***G***|`var G`|
 |***M***|`var M`|
 |***r***|`var r`|
 ``` csharp
+initVelocityZ = System.Math.Sqrt(G * M / r);
+```
+で、計算しています。
+> <h3>[CometLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/CometLauncher.cs)の初速導出方法</h3>
+計算は途中まで[PlanetLauncher.cs](Simulation_of_Universal_Gravitation/Assets/Scripts/DemoScripts/PlanetLauncher.cs)と同じですが、楕円軌道を描いてほしいので離心率![\begin{align*}
+e<1
+\end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ae%3C1%0A%5Cend%7Balign%2A%7D)の範囲でなるべく大きめの値をとっています。
+先ほどと同様にして、第二宇宙速度の*地球*と*飛行物体*をそれぞれ*`Sun_pseudo`(太陽)*と*自身の惑星*とし、公式は
+
+![\begin{align*}
+v_{2}= \sqrt{\frac{2GM}{r}}
+\end{align*}](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Av_%7B2%7D%3D+%5Csqrt%7B%5Cfrac%7B2GM%7D%7Br%7D%7D%0A%5Cend%7Balign%2A%7D)
+
+これは第一宇宙速度の√2倍なので計算結果を`* System.Math.Sqrt(2)`した値を上限としています。
 
 
 
