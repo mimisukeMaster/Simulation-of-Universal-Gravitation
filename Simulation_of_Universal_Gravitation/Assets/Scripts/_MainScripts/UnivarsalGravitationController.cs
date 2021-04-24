@@ -142,7 +142,7 @@ public class UnivarsalGravitationControllerEditor : Editor
             EditorGUILayout.LabelField("<color=default>--a--d--v--a--n--c--e--d--</color>",centerbold);
             EditorGUILayout.Space(5);
 
-            EditorGUILayout.LabelField("<color=default>The gravitational constant can be decreased\nif you want to understand visually.</color>",centerbold);
+            EditorGUILayout.LabelField("<color=default>The gravitational constant can be creased\nif you want to understand visually.</color>",centerbold);
             EditorGUILayout.Space(5);
 
             _target.VisualSimulation = EditorGUILayout.Toggle("VisualSimulation", _target.VisualSimulation);
@@ -175,7 +175,7 @@ public class UnivarsalGravitationControllerEditor : Editor
             GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
             EditorGUILayout.LabelField("<color=default>--a--d--v--a--n--c--e--d--</color>",centerbold);
 
-            EditorGUILayout.LabelField("<color=default>視覚的に分かりやすくするため万有引力定数を小さくできます</color>",centerbold);
+            EditorGUILayout.LabelField("<color=default>視覚的に分かりやすくするため万有引力定数を大きくできます</color>",centerbold);
 
             _target.VisualSimulation = EditorGUILayout.Toggle("VisualSimulation", _target.VisualSimulation);
 
