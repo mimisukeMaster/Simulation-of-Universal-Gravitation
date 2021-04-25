@@ -2,9 +2,9 @@ Shader "Hidden/PostProcessing/Bloom"
 {
     HLSLINCLUDE
 
-        #include "Packages/com.unity.postprocessing/PostProcessing/Shaders/StdLib.hlsl"
-        #include "Packages/com.unity.postprocessing/PostProcessing/Shaders/Colors.hlsl"
-        #include "Packages/com.unity.postprocessing/PostProcessing/Shaders/Sampling.hlsl"
+        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/StdLib.hlsl"
+        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Colors.hlsl"
+        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Sampling.hlsl"
 
         TEXTURE2D_SAMPLER2D(_MainTex, sampler_MainTex);
         TEXTURE2D_SAMPLER2D(_BloomTex, sampler_BloomTex);
