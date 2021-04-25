@@ -177,7 +177,16 @@ v_{2}= \sqrt{\frac{2GM}{r}}
 
 
 #### <h2 id="importwarning">取り込む際の注意点</h2>
-Unityに取り込んだ際に、以下の写真のようなエラーまたは警告文:warning:が表示される場合があります。ですが、Consoleタブの`Clear`を押すと消え、そのまま再生できるのであれば問題ありません。再生ボタンを押すと`All compiler errors have to fixed before you can enter playmode!`という表示文でストップされてしまうようであれば、対処する必要があります。恐らくUnity versionが異なっているためかもしれません。
+【注意1】ZIP形式でDownloadした後、それを展開するときに、ファイルをコピーできません:warning:という表示が出てくるかもしれません(以下の写真のように)。
+
+![ExtendError](https://user-images.githubusercontent.com/81568941/115995400-ff23ea80-a615-11eb-9751-64af0bf51907.png)
+
+このようなWindowが出てきたら全てスキップを押してしまって構いません。
+※何回か表示される場合があります。以下の動画のように全てスキップしてしまってください。
+
+![SkipHereEdited](https://user-images.githubusercontent.com/81568941/115995299-b53b0480-a615-11eb-9eb7-ddf074377450.gif)
+
+【注意2】Unityに取り込んだ際に、以下の写真のようなエラーまたは警告文:warning:が表示される場合があります。ですが、Consoleタブの`Clear`を押すと消え、そのまま再生できるのであれば問題ありません。再生ボタンを押すと`All compiler errors have to fixed before you can enter playmode!`という表示文でストップされてしまうようであれば、対処する必要があります。恐らくUnity versionが異なっているためかもしれません。
 
 ![ErrorWarning](https://user-images.githubusercontent.com/81568941/115403161-21d58e00-a227-11eb-8988-b3644b3ebcba.png)
 
