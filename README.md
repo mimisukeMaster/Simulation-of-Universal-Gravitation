@@ -18,10 +18,11 @@
 >   - [PlanetLauncher.csの初速導出方法](#firstunivelo)
 >   - [CometLauncher.csの初速導出方法](#comsum)
 > - [取り込む際の注意点](#importwarning)
+> - [License](#license)
 > - [クレジット表記](#credit)
 
 
-#### <h2 id="description">概要</h3>
+#### <h2 id="description">概要</h2>
 
 **:white_check_mark:このリポジトリは、あくまで万有引力をUnityで実装するという内容が土台になっています。**
 
@@ -191,7 +192,8 @@ v_{2}= \sqrt{\frac{2GM}{r}}
 ![ErrorWarning](https://user-images.githubusercontent.com/81568941/115403161-21d58e00-a227-11eb-8988-b3644b3ebcba.png)
 
 
-
+#### <h2 id="license">License</h2>
+The source code is licensed MIT,see [LICENSE](LICENSE).
 
 
 #### <h2 id="credit">クレジット表記</h2>
