@@ -5,49 +5,40 @@ using UnityEngine;
 public class CometLauncher : MonoBehaviour
 {
 
-    [Header("Specify the central celestial body")]
-    public GameObject Central_Celestialbody;
+    public float TorqueSpeed = 5; 
+        
+    [Header("Specify the fixed star(ex: sun)")]
+    public GameObject FixedStar;
+    [Range(1,1.414f)]
+    public float CometCoefficient;
         
     [Space(25)]
-    public GameObject UG_Director;
-    // Start is called before the first frame update
-    void Start()
-    {
+    public UnivarsalGravitationController UG_Director;
+    
+    
+    void Start() {
+
+        Vector3 myVec = transform.position;
+        Vector3 CentralVec = FixedStar.transform.position;
         
+        // Calculate launch velocity
+        var G = UG_Director.CONSTANT * UG_Director.COEFFICIENT;
+        var M = FixedStar.GetComponent<Rigidbody>().mass;
+        var r = Vector3.Distance(myVec, CentralVec);
+        
+        // Calculate launch velocity
+        // Launch in a direction normal to the vector between the two points
+        float initSpeed = (float)System.Math.Sqrt(G * M / r);
+        
+        Vector3 initVelocity = 
+            Quaternion.Euler(0, 90, 0) * (CentralVec - myVec).normalized * initSpeed * CometCoefficient;
+
+        GetComponent<Rigidbody>().velocity = initVelocity;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Time.frameCount == 1){      //Startに書くとvar G が0を取得してしまう為
-
-        Vector3 myVec = this.transform.position;
-        Vector3 CentralVec = this.Central_Celestialbody.transform.position;
-        
-        //First-cosmic-velocity Calculation
-        var G = this.UG_Director.GetComponent<UnivarsalGravitationController>().coefficient;//万有引力を引用
-        var M = this.Central_Celestialbody.GetComponent<Rigidbody>().mass;//中心となる天体(太陽)の質量
-        var r = Vector3.Distance(myVec, CentralVec);//２点間の距離
-        
-        float FirstVelocity; //第一宇宙速度m/s
-        
-        FirstVelocity = (float)System.Math.Sqrt(G * M / r);//第一宇宙速度設定
-
-
-        //\\
-        //Second-cosmic-velocity Calculation
-        //Second-cosmic-velocityはFirst-cosmic-velocityのちょうど√2倍であるので
-        //そのまま√2倍の値を設定
-        float SecondVelocity;
-
-        SecondVelocity = FirstVelocity * (float)System.Math.Sqrt(2);
-
-        float ThroughVelocity = SecondVelocity - (SecondVelocity - FirstVelocity) / 5 ;
-        GetComponent<Rigidbody>().velocity = transform.right*ThroughVelocity;//new Vector3(ThroughVelocity, 0, 0);
-
-
-        
-        }
-
+        // Simple rotational reproduction
+        //transform.Rotate(new Vector3(0, -TorqueSpeed,0));
     }
 }
