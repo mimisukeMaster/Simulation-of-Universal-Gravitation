@@ -17,11 +17,11 @@ Shader "Hidden/PostProcessing/Uber"
         #pragma vertex VertUVTransform
         #pragma fragment FragUber
 
-        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/StdLib.hlsl"
-        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Colors.hlsl"
-        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Sampling.hlsl"
-        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Builtins/Distortion.hlsl"
-        #include "Assets/Simulation-of-Universal-Gravitation-main/Simulation-of-Universal-Gravitation-main/Simulation_of_Universal_Gravitation/Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Builtins/Dithering.hlsl"
+        #include "Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/StdLib.hlsl"
+        #include "Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Colors.hlsl"
+        #include "Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Sampling.hlsl"
+        #include "Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Builtins/Distortion.hlsl"
+        #include "Packages/com.unity.postprocessing@3.0.3/PostProcessing/Shaders/Builtins/Dithering.hlsl"
 
         #define MAX_CHROMATIC_SAMPLES 16
 
