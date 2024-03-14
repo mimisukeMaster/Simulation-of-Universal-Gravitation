@@ -77,6 +77,7 @@ The initial velocity given to the comet is calculated separately in [CometLaunch
 
 **ATTENTION:**
 - The sun's mass must be very large beyond the upper limit of Rigidbody.mass or it will move under the effect of the planets, so alternatively, the sun's Rigidbody.isKinematic is set to true.
+- The reason why the tracks don't make a nice circle is that the values are slightly different due to calculation errors in the physics engine.
 
 
 ## LICENSE
