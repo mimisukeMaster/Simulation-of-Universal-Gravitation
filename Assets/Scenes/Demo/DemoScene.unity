@@ -1927,7 +1927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FixedStar: {fileID: 712398496}
-  COMET_COEFFICIENT: 0
+  COMET_COEFFICIENT: 1.3
   UG_Director: {fileID: 1940129686}
 --- !u!54 &1620506405
 Rigidbody:
