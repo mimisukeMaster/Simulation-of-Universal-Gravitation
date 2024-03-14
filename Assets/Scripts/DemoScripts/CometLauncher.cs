@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class CometLauncher : MonoBehaviour
 {
-
-    public float TorqueSpeed = 5; 
         
     [Header("Specify the fixed star(ex: sun)")]
     public GameObject FixedStar;
     [Range(1,1.414f)]
-    public float CometCoefficient;
+    public float COMET_COEFFICIENT;
         
     [Space(25)]
     public UnivarsalGravitationController UG_Director;
@@ -31,14 +29,8 @@ public class CometLauncher : MonoBehaviour
         float initSpeed = (float)System.Math.Sqrt(G * M / r);
         
         Vector3 initVelocity = 
-            Quaternion.Euler(0, 90, 0) * (CentralVec - myVec).normalized * initSpeed * CometCoefficient;
+            Quaternion.Euler(0, 90, 0) * (CentralVec - myVec).normalized * initSpeed * COMET_COEFFICIENT;
 
         GetComponent<Rigidbody>().velocity = initVelocity;
-    }
-
-    void Update()
-    {
-        // Simple rotational reproduction
-        //transform.Rotate(new Vector3(0, -TorqueSpeed,0));
     }
 }

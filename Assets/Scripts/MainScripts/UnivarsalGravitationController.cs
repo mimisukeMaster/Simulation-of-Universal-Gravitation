@@ -7,7 +7,7 @@ using System.Linq;
 
 public class UnivarsalGravitationController : MonoBehaviour
 {
-    [Tooltip("Hierarchyビューから,万有引力の対象となるものを\nドラッグ&ドロップでリストに追加してください")]
+    [Tooltip("Please add the objects to be subjected to universal gravitation to the list by dragging and dropping them from the Hierarchy view.")]
     [SerializeField]
     public List<Rigidbody> GravityTargets_obj = new List<Rigidbody>();
     [Tooltip("全てのRigidbodyをリストに追加する場合はチェックをして下さい")]
@@ -65,7 +65,6 @@ public class UnivarsalGravitationController : MonoBehaviour
             }
             i++;
         }
-        //Debug.Log(COEFFICIENT);
     }
 }
 
