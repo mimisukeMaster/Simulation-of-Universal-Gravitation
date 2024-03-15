@@ -8908,7 +8908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GravityTargets_obj: []
   AddAllRigidbody: 1
-  COEFFICIENT: 9.924812e+10
+  COEFFICIENT: 1e+10
   CONSTANT: 0
 --- !u!4 &2012656427
 Transform:
