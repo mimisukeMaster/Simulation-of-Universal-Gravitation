@@ -52,10 +52,5 @@ The author or copyright holder assumes no responsibility for the software.*
 ## Credits
 Imported from an website or AssetStore:
 - https://www.solarsystemscope.com/textures
-- https://www.solarsystemscope.com/textures
-- https://www.solarsystemscope.com/textures
 - http://www.planetaryvisions.com/Texture_map.php?pid=206
-- https://www.solarsystemscope.com/textures/
-- https://www.solarsystemscope.com/textures/
-- https://www.solarsystemscope.com/textures
 - https://assetstore.unity.com/packages/2d/textures-materials/sky/skybox-series-free-103633
