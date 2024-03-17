@@ -2377,18 +2377,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7edb2bc836ac218438d085b871fe7c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GravityTargets_obj:
-  - {fileID: 1190986586}
-  - {fileID: 2030505978}
-  - {fileID: 1671464666}
-  - {fileID: 558623760}
+  TargetsList:
   - {fileID: 712398501}
+  - {fileID: 1190986586}
+  - {fileID: 1671464666}
+  - {fileID: 2030505978}
   - {fileID: 265567532}
-  - {fileID: 1620506405}
+  - {fileID: 558623760}
   - {fileID: 1484242086}
+  - {fileID: 1620506405}
   AddAllRigidbody: 0
   COEFFICIENT: 10000000
   CONSTANT: 0
+  _computeShader: {fileID: 7200000, guid: 4a84f6f15f51b924996194e720d07f86, type: 3}
 --- !u!4 &1940129687
 Transform:
   m_ObjectHideFlags: 0

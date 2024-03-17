@@ -1,14 +1,28 @@
 // Each #kernel tells which function to compile; you can have many kernels
-#pragma kernel CSMain
+#pragma kernel UGCalc
 
-// Create a RenderTexture with enableRandomWrite flag and set it
-// with cs.SetTexture
-RWTexture2D<float4> Result;
+// CPUから受け取る値を入れる変数
+float3 i_pos; // 要素
+float3 n_pos;
+float i_mass;
+float n_mass;
+float constant;
+
+// CPUに送る結果を格納する変数
+RWStructuredBuffer<float> ResultBuffer_gravity;
+RWStructuredBuffer<float3> ResultBuffer_direction;
 
 [numthreads(8,8,1)]
-void CSMain (uint3 id : SV_DispatchThreadID)
+void UGCalc (uint3 id : SV_DispatchThreadID)
 {
-    // TODO: insert actual code here!
+    // Get the square of the distance between two points
+    float3 direction = normalize(i_pos - n_pos);
+    float distance = length(i_pos - n_pos);
+    distance *= distance;
+    
+    // Calculate universal gravitation and set those
+    ResultBuffer_gravity[0] = constant * i_mass * n_mass / distance;
+    ResultBuffer_direction[0] = direction;
 
-    Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+    
 }
