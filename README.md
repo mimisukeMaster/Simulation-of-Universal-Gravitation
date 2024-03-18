@@ -1,7 +1,7 @@
 # Simulation-of-Universal-Gravitation
 <br><p align="left">
     [<img src="https://img.shields.io/github/stars/mimisukeMaster/Simulation-of-Universal-Gravitation">](https://github.com/mimisukeMaster/Simulation-of-Universal-Gravitation/stargazers)
-    [<img src="https://img.shields.io/badge/PRs-welcome-orange?&logo=github">](https://github.com/mimisukeMaster/OsakanaFlock/pulls)
+    [<img src="https://img.shields.io/badge/PRs-welcome-orange?&logo=github">](https://github.com/mimisukeMaster/Simulation-of-Universal-Gravitation/pulls)
     [<img  src="https://img.shields.io/github/license/mimisukeMaster/Simulation-of-Universal-Gravitation">](https://www.apache.org/licenses/)
     <img src="https://img.shields.io/badge/made with-Unity2023.3.x-blue.svg?&logo=unity"><br>
     <img src="https://img.shields.io/github/repo-size/mimisukeMaster/Simulation-of-Universal-Gravitation?color=ff69b4">
