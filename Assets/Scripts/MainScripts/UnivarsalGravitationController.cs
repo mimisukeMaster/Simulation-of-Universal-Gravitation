@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using System;
 using System.Linq;
-
+using UnityEditor;
 
 
 
@@ -25,95 +25,118 @@ public class UnivarsalGravitationController : MonoBehaviour
     [HideInInspector]
     public float CONSTANT;
 
-    // Compute Shader
+
     [SerializeField]
-    ComputeShader _computeShader;
-    
-    private ComputeBuffer _buffer_gravity;
-    private ComputeBuffer _buffer_direction;
+    private ComputeShader _computeShader;
+
+    private ComputeBuffer _input_buffer;
+
+    private ComputeBuffer _result_buffer;
+
+
+    private struct InputBufferData
+    {
+        public float mass;
+        public Vector3 position;
+    }
+
+    private struct ResultBufferData
+    {  
+        public Vector3 force; 
+    }
+
+    private List<InputBufferData> inputBufferDataList  = new List<InputBufferData>();
+
+    private List<ResultBufferData> initialBufferDataList = new List<ResultBufferData>();
+    private ResultBufferData[] resultBufferDataArray;
+
+    // kernel保持
+    private int _kernel;
 
     void Awake()
     {
-        // Add Rigidbodies to the list
+        // Add Rigidbodies to the Target List
+        if(AddAllRigidbody){
         Rigidbody[] rblist = FindObjectsOfType<Rigidbody>();
-            TargetsList = TargetsList.Union(rblist).ToList();
-
+        TargetsList = TargetsList.Union(rblist).ToList();
+        }
+        else if(TargetsList.Count == 0){
+            Debug.LogError("Please add Rigidbodies to the Target List.");
+            EditorApplication.isPlaying = false;
+        }
         // Calculate universal constant of gravitation
         CONSTANT = 6.674f * Mathf.Pow(10, -11);
 
-        // Disable useGravity on all Rigidbodies
-        for (int i = 0; i <= TargetsList.Count -1 ; i++){
-            TargetsList[i].useGravity = false;
-        }
+        // Disable useGravity on all Rigidbodies and create a list by also assigning to a structure
+        for (int i = 0; i < TargetsList.Count; i++) TargetsList[i].useGravity = false;
 
         // Initialisation of compute buffer
-        _buffer_gravity = new ComputeBuffer(1, sizeof(float)); 
-        _buffer_direction = new ComputeBuffer(1, Marshal.SizeOf(typeof(Vector3))); 
+
+        // 各Bufferの用意をここでする、要素数と型はわかりきっているので.
+        // 初期化しないと下ののSetBuffer(  )でエラーが出る
+        // 第一引数はこのあと_input_bufferに入れるListの要素数分
+        _input_buffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(InputBufferData)));
+        _result_buffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(ResultBufferData)));
 
         // Set buffers in compute shader 
-        _computeShader.SetBuffer(_computeShader.FindKernel("UGCalc"), "ResultBuffer_gravity", _buffer_gravity);
-        _computeShader.SetBuffer(_computeShader.FindKernel("UGCalc"), "ResultBuffer_direction", _buffer_direction);
+        _kernel = _computeShader.FindKernel("UGCalc");
+        _computeShader.SetBuffer(_kernel, "InputBuffer", _input_buffer);
+        _computeShader.SetBuffer(_kernel, "ResultBuffer", _result_buffer);
+        
+        // Set values
+        _computeShader.SetFloat("constant", CONSTANT);
+        _computeShader.SetFloat("coefficient",COEFFICIENT);
+        _computeShader.SetInt("list_count", TargetsList.Count);
+
+        // Prepare as many elements of the list as are needed to assign the data to
+        for (int i = 0; i < TargetsList.Count; i++){
+            initialBufferDataList.Add(new ResultBufferData());
+        }
+        resultBufferDataArray = new ResultBufferData[TargetsList.Count];
     }
 
 
     void FixedUpdate()
-    { 
+    {
+        // The position changes, so they need to be sent every frame
 
-        for (int i = 0; i <= TargetsList.Count -1 ;)
+        for (int i = 0; i < TargetsList.Count; i++)
         {
-            for(int n = 0; n <= TargetsList.Count -1 ;)
-            {
-                if (i != n)
-                {
-                    // Give the compute shader values and let them process
-                    Vector3 i_position = TargetsList[i].transform.position;
-                    Vector3 n_position = TargetsList[n].transform.position;
-
-                    _computeShader.SetFloats("i_pos", new float[]{i_position.x, i_position.y, i_position.z});
-                    _computeShader.SetFloats("n_pos",new float[]{n_position.x, n_position.y, n_position.z});
-                    _computeShader.SetFloat("i_mass",TargetsList[i].mass);
-                    _computeShader.SetFloat("n_mass",TargetsList[n].mass);
-                    _computeShader.SetFloat("constant", CONSTANT);
-                    
-                    _computeShader.Dispatch(0, 1, 1, 1);
-                    
-                    // Get values
-                    // An element of type float3 is converted into an individual element of float[3]
-                    var data_gravity = new float[1];
-                    var data_direction = new float[3];
-                    _buffer_gravity.GetData(data_gravity);
-                    _buffer_direction.GetData(data_direction);
-                    
-
-                    // Type conversion
-                    float gravity = data_gravity[0];
-                    Vector3 direction = new Vector3(data_direction[0],data_direction[1],data_direction[2]);
-                    
-                    // Add force
-                    TargetsList[i].AddForce(gravity * direction * -1 * COEFFICIENT, ForceMode.Force);
-
-                    /*
-                    // Get the square of the distance between two points
-                    Vector3 direction = TargetsList[i].transform.position - TargetsList[n].transform.position;
-                    float distance = direction.magnitude;
-                    distance *= distance;
-
-                    // Calculate universal gravitation
-                    float gravity = CONSTANT * TargetsList[i].mass * TargetsList[n].mass / distance;
-
-                    // Add force
-                    TargetsList[i].AddForce(gravity * direction.normalized * -1 * COEFFICIENT, ForceMode.Force);
-                    */
-                }
-                n++;
-            }
-            i++;
+            // Create InputBufferData one by one from TargetList and add them to the list
+            InputBufferData inputBufferData = new InputBufferData(){
+                mass = TargetsList[i].mass,
+                position = TargetsList[i].transform.position
+            };
+            inputBufferDataList.Add(inputBufferData);
         }
+        
+        // Send the list via Buffer to the ComputeShader 
+        // Takes the form of an argument that can specify the list to be set and
+        // the number of elements in it
+
+        // inputBufferDataListだけだと要素数分が確保できない？いくら分使うのか示す必要があるから第3引数要る？
+        // _result_buffer にはNewされただけのListをSetして向こうのResultBufferの要素数を確保
+        _input_buffer.SetData(inputBufferDataList, 0, 0, inputBufferDataList.Count);
+        _result_buffer.SetData(initialBufferDataList, 0, 0, initialBufferDataList.Count);
+
+
+        _computeShader.Dispatch(_kernel,inputBufferDataList.Count,1,1);
+
+        // Get data array
+        _result_buffer.GetData(resultBufferDataArray);
+
+        // Empty the elements of the used list
+        for (int i = 0; i < resultBufferDataArray.Length; i++){ 
+            TargetsList[i].AddForce(resultBufferDataArray[i].force, ForceMode.Force);
+        }
+
+        // 最後に使用済Listを空にする init buffer list はもともとNewしてある
+        inputBufferDataList.Clear();
     }
     private void OnDestroy() 
     {
-        _buffer_direction.Release();
-        _buffer_gravity.Release();
+        _input_buffer.Release();
+        _result_buffer.Release();
     }
 }
 

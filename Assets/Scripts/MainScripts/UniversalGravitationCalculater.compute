@@ -2,27 +2,47 @@
 #pragma kernel UGCalc
 
 // CPUから受け取る値を入れる変数
-float3 i_pos; // 要素
-float3 n_pos;
-float i_mass;
-float n_mass;
 float constant;
+float coefficient;
+int list_count;
+
+struct InputBufferData{
+    float mass;
+    float3 position;
+};
+
+struct ResultBufferData{
+    float3 force;
+};
 
 // CPUに送る結果を格納する変数
-RWStructuredBuffer<float> ResultBuffer_gravity;
-RWStructuredBuffer<float3> ResultBuffer_direction;
+RWStructuredBuffer<InputBufferData> InputBuffer;
+RWStructuredBuffer<ResultBufferData> ResultBuffer;
 
-[numthreads(8,8,1)]
-void UGCalc (uint3 id : SV_DispatchThreadID)
+
+[numthreads(1, 1, 1)]
+void UGCalc (uint id : SV_DispatchThreadID)
 {
-    // Get the square of the distance between two points
-    float3 direction = normalize(i_pos - n_pos);
-    float distance = length(i_pos - n_pos);
-    distance *= distance;
-    
-    // Calculate universal gravitation and set those
-    ResultBuffer_gravity[0] = constant * i_mass * n_mass / distance;
-    ResultBuffer_direction[0] = direction;
+    int idx = id.x;
 
-    
+    for (int n = 0; n < list_count; n++)
+    {   
+        if(idx == n) continue;
+        
+        // しょっちゅう使うものなのでゆーて負荷重いので保持しておく
+        float3 vec = InputBuffer[idx].position - InputBuffer[n].position;
+        
+        // Get the square of the distance between two points
+        float distance = length(vec);
+        distance *= distance;
+
+        // Calculate universal gravitation
+        float gravity = constant * InputBuffer[idx].mass * InputBuffer[n].mass / distance;
+
+        // Calculate direction vector
+        float3 direction = normalize(vec);
+        
+        // Calculate force and set it
+        ResultBuffer[idx].force += gravity * direction * -1 * coefficient;
+    }  
 }
