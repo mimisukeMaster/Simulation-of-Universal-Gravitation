@@ -52,5 +52,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Simulation_of_Universal_Gravitation.sln"
+    "dotnet.defaultSolution": "Simulation-of-Universal-Gravitation.sln"
 }
