@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -208,8 +208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157333625}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11668099, y: 0.88216734, z: -0.34571648, w: -0.29773548}
-  m_LocalPosition: {x: -0.10119153, y: 17.630005, z: 10.615412}
+  m_LocalRotation: {x: -0.13478631, y: 0.8650359, z: -0.33214617, w: -0.35103363}
+  m_LocalPosition: {x: 16.72638, y: 23.136871, z: 18.32543}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9b93b107caac24dbb88e587aa91042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Count: 1600
+  Count: 2000
   SpawnBoundingBox: {x: 50, y: 50, z: 50}
   SpawnObject: {fileID: 674827621}
 --- !u!4 &1808257935
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetsList: []
   AddAllRigidbody: 1
-  COEFFICIENT: 1e+10
+  COEFFICIENT: 1e+11
   CONSTANT: 0
   _computeShader: {fileID: 7200000, guid: 4a84f6f15f51b924996194e720d07f86, type: 3}
 --- !u!4 &2012656427

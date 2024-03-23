@@ -31,7 +31,7 @@ The initial velocity given to the comet is calculated separately in [CometLaunch
 
 **ATTENTION:**
 - The sun's mass must be very large beyond the upper limit of Rigidbody.mass or it will move under the effect of the planets, so alternatively, the sun's Rigidbody.isKinematic is set to true.
-- The reason why the tracks don't make a nice circle is that the values are slightly different due to calculation errors in the physics engine.
+- The reason why the tracks are not neat and errors occur is that the distance between the planets is much closer than it actually is, and they are attracted to each other, which affects the direction of travel more greatly.
 - As this is only a simplified simulation, the planetary rotations, inclination of the orbital planes, mass and distance ratios between the planets, etc. are **not reproduced or correct** in this project.
 
 

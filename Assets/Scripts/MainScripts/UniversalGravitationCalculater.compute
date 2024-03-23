@@ -1,7 +1,6 @@
-// Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel UGCalc
 
-// CPUから受け取る値を入れる変数
+
 float constant;
 float coefficient;
 int list_count;
@@ -10,26 +9,32 @@ struct InputBufferData{
     float mass;
     float3 position;
 };
-
 struct ResultBufferData{
     float3 force;
 };
 
-// CPUに送る結果を格納する変数
+
 RWStructuredBuffer<InputBufferData> InputBuffer;
 RWStructuredBuffer<ResultBufferData> ResultBuffer;
 
 
+/// [About Numthreads]
+/// Since a thread group for the elements of the list is specified in ComputeShader.Dispatch
+/// on the c# side and one thread is specified with (1, 1, 1) on this side,
+/// the total is (number of elements * 1 * 1 ) * ( 1 * 1 * 1 ) to start up a thread for the elements
+/// without excess or shortage.
 [numthreads(1, 1, 1)]
 void UGCalc (uint id : SV_DispatchThreadID)
 {
     int idx = id.x;
 
+    // Initialize the value calculated in the previous thread
+    ResultBuffer[idx].force = float3(0, 0, 0);
+    
     for (int n = 0; n < list_count; n++)
     {   
         if(idx == n) continue;
-        
-        // しょっちゅう使うものなのでゆーて負荷重いので保持しておく
+    
         float3 vec = InputBuffer[idx].position - InputBuffer[n].position;
         
         // Get the square of the distance between two points
@@ -42,7 +47,7 @@ void UGCalc (uint id : SV_DispatchThreadID)
         // Calculate direction vector
         float3 direction = normalize(vec);
         
-        // Calculate force and set it
+        // Calculate and set force for each
         ResultBuffer[idx].force += gravity * direction * -1 * coefficient;
     }  
 }
