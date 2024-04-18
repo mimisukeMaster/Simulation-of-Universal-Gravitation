@@ -3,7 +3,7 @@
 
 float constant;
 float coefficient;
-int list_count;
+int listCount;
 
 struct InputBufferData{
     float mass;
@@ -31,7 +31,7 @@ void UGCalc (uint id : SV_DispatchThreadID)
     // Initialize the value calculated in the previous thread
     ResultBuffer[idx].force = float3(0, 0, 0);
     
-    for (int n = 0; n < list_count; n++)
+    for (int n = 0; n < listCount; n++)
     {   
         if(idx == n) continue;
     

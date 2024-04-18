@@ -12,7 +12,7 @@ public class UnivarsalGravitationController : MonoBehaviour
 {
     [Tooltip("Please add the objects to be subjected to universal gravitation to the list by dragging and dropping them from the Hierarchy view.")]
     [SerializeField]
-    public List<Rigidbody> TargetsList = new List<Rigidbody>();
+    public List<Rigidbody> TargetsList;
     [Tooltip("Turn on to add all Rigidbodies to the list.")]
     public bool AddAllRigidbody;
 
@@ -33,6 +33,8 @@ public class UnivarsalGravitationController : MonoBehaviour
 
     private ComputeBuffer _result_buffer;
 
+    private int _kernel;
+
 
     private struct InputBufferData
     {
@@ -51,24 +53,17 @@ public class UnivarsalGravitationController : MonoBehaviour
     private List<InputBufferData> inputBufferDataList  = new List<InputBufferData>();
 
     /// <summary>
-    /// List to ensure capacity for the data received
-    /// </summary>
-    private List<ResultBufferData> initialBufferDataList = new List<ResultBufferData>();
-
-    /// <summary>
     /// Array to store the data received
     /// </summary>
     private ResultBufferData[] resultBufferDataArray;
-
-    private int _kernel;
 
 
     void Awake()
     {
         // Add Rigidbodies to the Target List
         if(AddAllRigidbody){
-        Rigidbody[] rblist = FindObjectsOfType<Rigidbody>();
-        TargetsList = TargetsList.Union(rblist).ToList();
+            Rigidbody[] rblist = FindObjectsOfType<Rigidbody>();
+            TargetsList = TargetsList.Union(rblist).ToList();
         }
         else if(TargetsList.Count == 0){
             Debug.LogError("Please add Rigidbodies to the Target List.");
@@ -93,7 +88,7 @@ public class UnivarsalGravitationController : MonoBehaviour
         // Set each value
         _computeShader.SetFloat("constant", CONSTANT);
         _computeShader.SetFloat("coefficient",COEFFICIENT);
-        _computeShader.SetInt("list_count", TargetsList.Count);
+        _computeShader.SetInt("listCount", TargetsList.Count);
 
         // Initialized by setting the number of elements in the array to be received
         resultBufferDataArray = new ResultBufferData[TargetsList.Count];
@@ -113,17 +108,12 @@ public class UnivarsalGravitationController : MonoBehaviour
         }
         
         // Send the list via Buffer to the ComputeShader 
-        // Takes the form of an argument that can specify the list to be set and
-        // the number of elements in it
-
-        //_result_bufferには前回の時のGetしたやつが残っているから、Setして一掃する！要素数は同じものを指定している
         _input_buffer.SetData(inputBufferDataList, 0, 0, inputBufferDataList.Count);
-        //_result_buffer.SetData(initialBufferDataList, 0, 0, initialBufferDataList.Count);
 
-
+        // Let ComputeShader do the calculation
         _computeShader.Dispatch(_kernel,inputBufferDataList.Count,1,1);
 
-        // receive data array
+        // Receive data array
         _result_buffer.GetData(resultBufferDataArray);
 
         // Empty the elements of the used list
