@@ -8,32 +8,33 @@ using UnityEditor;
 
 
 
-public class UnivarsalGravitationController : MonoBehaviour
+public class UniversalGravitationController : MonoBehaviour
 {
-    [Tooltip("Please add the objects to be subjected to universal gravitation to the list by dragging and dropping them from the Hierarchy view.")]
+    [Tooltip("Please drag the Rigidbodies you want to apply universal gravitation to the list from the Hierarchy view.")]
     [SerializeField]
     public List<Rigidbody> TargetsList;
-    [Tooltip("Turn on to add all Rigidbodies to the list.")]
+    [Tooltip("Enable this to add all Rigidbodies to the list.")]
     public bool AddAllRigidbody;
 
-    // Coefficient to multiply for a given force (to visible easily)
+    // Coefficient to multiply for a given force to make it more visible
+    // The range can be changed if necessary
     [SerializeField]
-    [Range(1, 100000000000)] // Range is able to change if necessary
+    [Range(1, 100000000000)]
     public float COEFFICIENT;
 
-    // Universal constant of gravitation
+    // Gravitational constant
     [HideInInspector]
     public float CONSTANT;
 
 
     [SerializeField]
-    private ComputeShader _computeShader;
+    private ComputeShader computeShader;
 
-    private ComputeBuffer _input_buffer;
+    private ComputeBuffer inputBuffer;
 
-    private ComputeBuffer _result_buffer;
+    private ComputeBuffer resultBuffer;
 
-    private int _kernel;
+    private int kernel;
 
 
     private struct InputBufferData
@@ -48,7 +49,7 @@ public class UnivarsalGravitationController : MonoBehaviour
     }
 
     /// <summary>
-    /// List of data to be sent to ComputeShader
+    /// List of data to be sent to compute shader
     /// </summary>
     private List<InputBufferData> inputBufferDataList  = new List<InputBufferData>();
 
@@ -61,36 +62,38 @@ public class UnivarsalGravitationController : MonoBehaviour
     void Awake()
     {
         // Add Rigidbodies to the Target List
-        if(AddAllRigidbody){
+        if (AddAllRigidbody)
+        {
             Rigidbody[] rblist = FindObjectsOfType<Rigidbody>();
             TargetsList = TargetsList.Union(rblist).ToList();
         }
-        else if(TargetsList.Count == 0){
+        else if (TargetsList.Count == 0)
+        {
             Debug.LogError("Please add Rigidbodies to the Target List.");
             EditorApplication.isPlaying = false;
         }
 
-        // Calculate universal constant of gravitation
+        // Calculate gravitational constant
         CONSTANT = 6.674f * Mathf.Pow(10, -11);
 
         // Disable useGravity on all Rigidbodies
         for (int i = 0; i < TargetsList.Count; i++) TargetsList[i].useGravity = false;
 
-        // Initialisation of compute buffer
-        _input_buffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(InputBufferData)));
-        _result_buffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(ResultBufferData)));
+        // Initialization of compute buffer
+        inputBuffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(InputBufferData)));
+        resultBuffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(ResultBufferData)));
 
         // Set buffers in compute shader 
-        _kernel = _computeShader.FindKernel("UGCalc");
-        _computeShader.SetBuffer(_kernel, "InputBuffer", _input_buffer);
-        _computeShader.SetBuffer(_kernel, "ResultBuffer", _result_buffer);
+        kernel = computeShader.FindKernel("UGComputer");
+        computeShader.SetBuffer(kernel, "InputBuffer", inputBuffer);
+        computeShader.SetBuffer(kernel, "ResultBuffer", resultBuffer);
         
         // Set each value
-        _computeShader.SetFloat("constant", CONSTANT);
-        _computeShader.SetFloat("coefficient",COEFFICIENT);
-        _computeShader.SetInt("listCount", TargetsList.Count);
+        computeShader.SetFloat("constant", CONSTANT);
+        computeShader.SetFloat("coefficient",COEFFICIENT);
+        computeShader.SetInt("listCount", TargetsList.Count);
 
-        // Initialized by setting the number of elements in the array to be received
+        // Initialize by defining the number of elements the array will receive
         resultBufferDataArray = new ResultBufferData[TargetsList.Count];
     }
 
@@ -100,34 +103,37 @@ public class UnivarsalGravitationController : MonoBehaviour
         for (int i = 0; i < TargetsList.Count; i++)
         {
             // Create InputBufferData one by one from TargetList and add them to the list
-            InputBufferData inputBufferData = new InputBufferData(){
+            InputBufferData inputBufferData = new InputBufferData()
+            {
                 mass = TargetsList[i].mass,
                 position = TargetsList[i].transform.position
             };
             inputBufferDataList.Add(inputBufferData);
         }
         
-        // Send the list via Buffer to the ComputeShader 
-        _input_buffer.SetData(inputBufferDataList, 0, 0, inputBufferDataList.Count);
+        // Send the list via Buffer to the compute shader 
+        inputBuffer.SetData(inputBufferDataList, 0, 0, inputBufferDataList.Count);
 
         // Let ComputeShader do the calculation
-        _computeShader.Dispatch(_kernel,inputBufferDataList.Count,1,1);
+        computeShader.Dispatch(kernel, inputBufferDataList.Count, 1, 1);
 
         // Receive data array
-        _result_buffer.GetData(resultBufferDataArray);
+        resultBuffer.GetData(resultBufferDataArray);
 
-        // Empty the elements of the used list
-        for (int i = 0; i < resultBufferDataArray.Length; i++){ 
+        // Add force for each Rigidbodies
+        for (int i = 0; i < resultBufferDataArray.Length; i++)
+        { 
             TargetsList[i].AddForce(resultBufferDataArray[i].force, ForceMode.Force);
         }
 
+        // Empty the elements of the used list
         inputBufferDataList.Clear();
     }
 
     private void OnDestroy() 
     {
-        _input_buffer.Release();
-        _result_buffer.Release();
+        inputBuffer.Release();
+        resultBuffer.Release();
     }
 }
 

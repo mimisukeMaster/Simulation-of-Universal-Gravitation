@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DebugLineRenderer : MonoBehaviour
 {
-    LineRenderer line;
-    int count;
+    private LineRenderer line;
+    private int count;
 
     void Start () 
     {

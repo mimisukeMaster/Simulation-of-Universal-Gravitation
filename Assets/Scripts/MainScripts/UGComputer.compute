@@ -1,53 +1,52 @@
-#pragma kernel UGCalc
+#pragma kernel UGComputer
 
 
 float constant;
 float coefficient;
 int listCount;
 
-struct InputBufferData{
+struct InputBufferData
+{
     float mass;
     float3 position;
 };
-struct ResultBufferData{
+
+struct ResultBufferData
+{
     float3 force;
 };
-
 
 RWStructuredBuffer<InputBufferData> InputBuffer;
 RWStructuredBuffer<ResultBufferData> ResultBuffer;
 
-
-/// [About Numthreads]
+/// About NumThreads
 /// Since a thread group for the elements of the list is specified in ComputeShader.Dispatch
-/// on the c# side and one thread is specified with (1, 1, 1) on this side,
-/// the total is (number of elements * 1 * 1 ) * ( 1 * 1 * 1 ) to start up a thread for the elements
-/// without excess or shortage.
+/// on the C# side, and a single thread is specified as (1, 1, 1) on this side,
+/// the total number of threads started is (number of elements * 1 * 1) * (1 * 1 * 1),
+/// ensuring that each element gets exactly one thread without excess or shortage.
 [numthreads(1, 1, 1)]
-void UGCalc (uint id : SV_DispatchThreadID)
+void UGComputer (uint id : SV_DispatchThreadID)
 {
-    int idx = id.x;
-
     // Initialize the value calculated in the previous thread
-    ResultBuffer[idx].force = float3(0, 0, 0);
+    ResultBuffer[id.x].force = float3(0, 0, 0);
     
     for (int n = 0; n < listCount; n++)
     {   
-        if(idx == n) continue;
+        if (id.x == n) continue;
     
-        float3 vec = InputBuffer[idx].position - InputBuffer[n].position;
+        float3 vec = InputBuffer[id.x].position - InputBuffer[n].position;
         
         // Get the square of the distance between two points
         float distance = length(vec);
         distance *= distance;
 
         // Calculate universal gravitation
-        float gravity = constant * InputBuffer[idx].mass * InputBuffer[n].mass / distance;
+        float gravity = constant * InputBuffer[id.x].mass * InputBuffer[n].mass / distance;
 
         // Calculate direction vector
         float3 direction = normalize(vec);
         
         // Calculate and set force for each
-        ResultBuffer[idx].force += gravity * direction * -1 * coefficient;
+        ResultBuffer[id.x].force += gravity * direction * -1 * coefficient;
     }  
 }

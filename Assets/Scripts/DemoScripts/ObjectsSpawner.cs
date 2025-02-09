@@ -26,7 +26,7 @@ public class ObjectsSpawner : MonoBehaviour
             float rotZ = Random.Range(-180, 180);
             Quaternion rot = Quaternion.Euler(rotX, rotY, rotZ);
             
-            Instantiate(SpawnObject,pos,rot);
+            Instantiate(SpawnObject, pos, rot);
         }
     }
 

@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9b93b107caac24dbb88e587aa91042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Count: 2000
+  Count: 1000
   SpawnBoundingBox: {x: 50, y: 50, z: 50}
   SpawnObject: {fileID: 674827621}
 --- !u!4 &1808257935
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 2012656427}
   - component: {fileID: 2012656426}
   m_Layer: 0
-  m_Name: UniversalGravitationDirector
+  m_Name: UniversalGravitationController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,7 +522,7 @@ MonoBehaviour:
   AddAllRigidbody: 1
   COEFFICIENT: 1e+11
   CONSTANT: 0
-  _computeShader: {fileID: 7200000, guid: 4a84f6f15f51b924996194e720d07f86, type: 3}
+  computeShader: {fileID: 7200000, guid: 4a84f6f15f51b924996194e720d07f86, type: 3}
 --- !u!4 &2012656427
 Transform:
   m_ObjectHideFlags: 0
@@ -545,5 +545,5 @@ SceneRoots:
   - {fileID: 157333628}
   - {fileID: 1180712657}
   - {fileID: 2012656427}
-  - {fileID: 674827626}
   - {fileID: 1808257935}
+  - {fileID: 674827626}

@@ -21,7 +21,7 @@ The main process is the calculation of the universal gravitation and first cosmi
 ## About [SimpleScriptScene](/Assets/Scenes/SimpleScriptScene.unity)
 This scene simulates only the state of universal gravitation between objects.<br>
 
-If the force is very small due to mass, universal gravitational constant, etc., adjust the value of the parameter `COEFFICIENT` in the [UniversalGravitationController.cs](/Assets/Scripts/MainScripts/UnivarsalGravitationController.cs) from the inspector view accordingly.
+If the force is very small due to mass, universal gravitational constant, etc., adjust the value of the parameter `COEFFICIENT` in the [UniversalGravitationController.cs](/Assets/Scripts/MainScripts/UniversalGravitationController.cs) from the inspector view accordingly.
 
 
 ## About [DemoScene](/Assets/Scenes/Demo/DemoScene.unity)
