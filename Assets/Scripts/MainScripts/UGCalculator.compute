@@ -1,4 +1,4 @@
-#pragma kernel UGComputer
+#pragma kernel UGCalculator
 
 
 float constant;
@@ -25,7 +25,7 @@ RWStructuredBuffer<ResultBufferData> ResultBuffer;
 /// the total number of threads started is (number of elements * 1 * 1) * (1 * 1 * 1),
 /// ensuring that each element gets exactly one thread without excess or shortage.
 [numthreads(1, 1, 1)]
-void UGComputer (uint id : SV_DispatchThreadID)
+void UGCalculator (uint id : SV_DispatchThreadID)
 {
     // Initialize the value calculated in the previous thread
     ResultBuffer[id.x].force = float3(0, 0, 0);

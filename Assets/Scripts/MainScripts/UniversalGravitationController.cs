@@ -84,7 +84,7 @@ public class UniversalGravitationController : MonoBehaviour
         resultBuffer = new ComputeBuffer(TargetsList.Count, Marshal.SizeOf(typeof(ResultBufferData)));
 
         // Set buffers in compute shader 
-        kernel = computeShader.FindKernel("UGComputer");
+        kernel = computeShader.FindKernel("UGCalculator");
         computeShader.SetBuffer(kernel, "InputBuffer", inputBuffer);
         computeShader.SetBuffer(kernel, "ResultBuffer", resultBuffer);
         

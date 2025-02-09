@@ -2,10 +2,8 @@
 
 public class PlanetLauncher : MonoBehaviour
 {        
-    [Tooltip("Specify the fixed star(ex: sun)")]
+    [Tooltip("Specify the fixed star (ex: sun)")]
     public GameObject FixedStar;
-        
-    [Space(25)]
     public UniversalGravitationController UGController;
     
     
