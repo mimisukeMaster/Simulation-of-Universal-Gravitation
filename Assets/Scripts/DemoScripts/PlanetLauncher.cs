@@ -23,6 +23,6 @@ public class PlanetLauncher : MonoBehaviour
         Vector3 initVelocity = 
             Quaternion.Euler(0, 90, 0) * (CentralVec - myVec).normalized * initSpeed;
 
-        GetComponent<Rigidbody>().velocity = initVelocity;
+        GetComponent<Rigidbody>().linearVelocity = initVelocity;
     }
 }

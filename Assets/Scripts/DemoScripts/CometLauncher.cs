@@ -28,6 +28,6 @@ public class CometLauncher : MonoBehaviour
         Vector3 initVelocity = 
             Quaternion.Euler(0, 90, 0) * (OriginVec - myVec).normalized * initSpeed * COMET_COEFFICIENT;
 
-        GetComponent<Rigidbody>().velocity = initVelocity;
+        GetComponent<Rigidbody>().linearVelocity = initVelocity;
     }
 }
