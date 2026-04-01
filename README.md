@@ -3,7 +3,7 @@
     [<img src="https://img.shields.io/github/stars/mimisukeMaster/Simulation-of-Universal-Gravitation">](https://github.com/mimisukeMaster/Simulation-of-Universal-Gravitation/stargazers)
     [<img src="https://img.shields.io/badge/PRs-welcome-orange?&logo=github">](https://github.com/mimisukeMaster/Simulation-of-Universal-Gravitation/pulls)
     [<img  src="https://img.shields.io/github/license/mimisukeMaster/Simulation-of-Universal-Gravitation">](https://www.apache.org/licenses/)
-    <img src="https://img.shields.io/badge/made with-Unity2023.3.x-blue.svg?&logo=unity"><br>
+    <img src="https://img.shields.io/badge/made with-Unity6000.2.x-blue.svg?&logo=unity"><br>
     <img src="https://img.shields.io/github/repo-size/mimisukeMaster/Simulation-of-Universal-Gravitation?color=ff69b4">
     [<img src="https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc">](https://open.vscode.dev/mimisukeMaster/Simulation-of-Universal-Gravitation)
     </p>
@@ -15,7 +15,7 @@ This repo is a sample project that simulates universal gravitation in Unity.
 The main process is the calculation of the universal gravitation and first cosmic velocity based on physical formulae.
 
 ## Environments
-### Unity version: Unity2023.3.21 LTS
+### Unity version: Unity6000.2.0f1
 
 
 ## About [SimpleScriptScene](/Assets/Scenes/SimpleScriptScene.unity)

@@ -20,13 +20,16 @@ RWStructuredBuffer<InputBufferData> InputBuffer;
 RWStructuredBuffer<ResultBufferData> ResultBuffer;
 
 /// About NumThreads
-/// Since a thread group for the elements of the list is specified in ComputeShader.Dispatch
-/// on the C# side, and a single thread is specified as (1, 1, 1) on this side,
-/// the total number of threads started is (number of elements * 1 * 1) * (1 * 1 * 1),
-/// ensuring that each element gets exactly one thread without excess or shortage.
-[numthreads(1, 1, 1)]
+/// We set the thread count per group to 256 to optimize GPU processing.
+/// The script calculates the required number of groups by dividing the total element count by 256 and rounding up.
+/// Because this creates extra threads beyond the actual element count,
+/// the shader must exit early if the thread ID exceeds the element count.
+[numthreads(256, 1, 1)]
 void UGCalculator (uint id : SV_DispatchThreadID)
 {
+    // Filter out excess threads that exceed the number of objects
+    if (id.x >= listCount) return;
+
     // Initialize the value calculated in the previous thread
     ResultBuffer[id.x].force = float3(0, 0, 0);
     

@@ -59,18 +59,20 @@ public class UniversalGravitationController : MonoBehaviour
     private ResultBufferData[] resultBufferDataArray;
 
 
-    void Awake()
+    void Start()
     {
         // Add Rigidbodies to the Target List
         if (AddAllRigidbody)
         {
-            Rigidbody[] rblist = FindObjectsOfType<Rigidbody>();
+            Rigidbody[] rblist = FindObjectsByType<Rigidbody>(FindObjectsSortMode.None);
             TargetsList = TargetsList.Union(rblist).ToList();
         }
         else if (TargetsList.Count == 0)
         {
             Debug.LogError("Please add Rigidbodies to the Target List.");
+            #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
+            #endif
         }
 
         // Calculate gravitational constant
@@ -115,7 +117,12 @@ public class UniversalGravitationController : MonoBehaviour
         inputBuffer.SetData(inputBufferDataList, 0, 0, inputBufferDataList.Count);
 
         // Let ComputeShader do the calculation
-        computeShader.Dispatch(kernel, inputBufferDataList.Count, 1, 1);
+        // Since the first component of the number of threads to be launched is 256, 
+        // the number of groups is divided by 256 and rounded up to prepare enough threads without shortage.
+        int threadGroupSize = 256;
+        int threadGroupsX = Mathf.CeilToInt((float)inputBufferDataList.Count / threadGroupSize);
+        
+        computeShader.Dispatch(kernel, threadGroupsX, 1, 1);
 
         // Receive data array
         resultBuffer.GetData(resultBufferDataArray);
